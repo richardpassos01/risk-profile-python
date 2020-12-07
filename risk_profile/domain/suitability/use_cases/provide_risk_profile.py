@@ -5,24 +5,25 @@ class ProvideRiskProfile:
     def __init__(
         self,
         calculate_base_score,
-        determine_eligibility_use_case,
+        determine_eligibility,
         provide_base_suitability
     ):
         self.calculate_base_score = calculate_base_score
-        self.determine_eligibility = determine_eligibility_use_case
+        self.determine_eligibility = determine_eligibility
         self.provide_base_suitability = provide_base_suitability
 
     def execute(self, data):
         try:
-            base_score = self.calculate_base_score.execute(data)
+            user = data
+            base_score = self.calculate_base_score.execute(user)
             is_eligible = True
 
-            base_suitability = self.provide_base_suitability.execute(data, is_eligible, base_score)
+            risk_profile = self.provide_base_suitability.execute(user, is_eligible, base_score)
             
-            self.determine_eligibility.execute('test')
+            self.determine_eligibility.execute(user, risk_profile)
             
             
-            return base_suitability
+            return risk_profile
         except Exception as e:
             print(e)
             if e.code==-2013:
