@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-#from risk_profile.application.controllers import StudentsViewSet
+from risk_profile.application.controllers import RiskProfileViewSet as Controller
 
 router = routers.DefaultRouter()
-#router.register(r'risk-profile', StudentsViewSet)
+router.register(r'risk-profile', Controller.RiskProfileViewSet,
+                basename="RiskProfile")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
