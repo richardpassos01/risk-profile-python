@@ -1,6 +1,6 @@
 from risk_profile.shared.enums.user_definition_by_age import UserDefinitionByQuantityYears
 from risk_profile.shared.enums.risk_points_rating import RiskPointsRating
-from risk_profile.domain.shared.utils.calculator import deduct_points_from_all_lines_of_insurance 
+from risk_profile.domain.suitability.utils.calculator import deduct_points_from_all_lines_of_insurance 
 class CalculateRiskPointsByAge:
     def __init__(self):
         self.user_definition_by_age = UserDefinitionByQuantityYears
