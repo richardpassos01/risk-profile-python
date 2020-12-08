@@ -15,7 +15,7 @@ class CalculateRiskPointsByVehicles:
         current_year = datetime.datetime.now().year
 
         for vehicle in user["vehicles"]:
-            produced_how_many_years_ago = current_year - vehicle['year'];
+            produced_how_many_years_ago = current_year - vehicle['year']
 
             is_new_vehicle = produced_how_many_years_ago <= self.vehicle_situation.NEW.value
 

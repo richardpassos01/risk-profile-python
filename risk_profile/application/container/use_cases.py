@@ -8,6 +8,7 @@ from risk_profile.domain.suitability.use_cases import calculates_risk_points_by_
 from risk_profile.domain.suitability.use_cases import calculates_risk_points_by_dependents
 from risk_profile.domain.suitability.use_cases import calculates_risk_points_by_marital_status
 from risk_profile.domain.suitability.use_cases import calculates_risk_points_by_vehicles
+from risk_profile.domain.suitability.use_cases import provide_suitability
 
 
 def create_calculate_base_score():
@@ -37,6 +38,9 @@ def create_calculates_risk_points_by_marital_status():
 def create_calculates_risk_points_by_vehicles():
     return calculates_risk_points_by_vehicles.CalculateRiskPointsByVehicles()
 
+def create_provide_suitability():
+    return provide_suitability.ProvideSuitability()
+
 def create_provide_risk_profile():
     return provide_risk_profile.ProvideRiskProfile(
         create_calculate_base_score(),
@@ -47,5 +51,6 @@ def create_provide_risk_profile():
         create_calculates_risk_points_by_houses(),
         create_calculates_risk_points_by_dependents(),
         create_calculates_risk_points_by_marital_status(),
-        create_calculates_risk_points_by_vehicles(), 
+        create_calculates_risk_points_by_vehicles(),
+        create_provide_suitability()
     )
