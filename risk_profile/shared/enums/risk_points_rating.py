@@ -1,6 +1,8 @@
 from enum import Enum
 
 class RiskPointsRating(Enum):
-    MODERATE = 1
-    SEVERAGE = 2
+    LOW_RISK = 1
+    MEDIUM_RISK = 2
+    BIG_RISK = 4
+
     

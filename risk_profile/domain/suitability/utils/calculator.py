@@ -26,3 +26,10 @@ def add_risk_point_for_insurance(
     number_of_risk_points_to_add
 ):
     insurance["risk_points"] += number_of_risk_points_to_add
+
+
+def deduct_risk_point_for_insurance(
+    insurance,
+    number_of_risk_points_to_deduct
+):
+    insurance["risk_points"] -= number_of_risk_points_to_deduct

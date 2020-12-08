@@ -18,9 +18,9 @@ class CalculateRiskPointsByAge:
             return
 
         if not is_under_the_age_of_thirty:
-            number_of_risk_points_to_deduct = self.risk_points_rating.SEVERAGE.value
+            number_of_risk_points_to_deduct = self.risk_points_rating.MEDIUM_RISK.value
 
         if is_over_the_young_age:
-            number_of_risk_points_to_deduct = self.risk_points_rating.MODERATE.value
+            number_of_risk_points_to_deduct = self.risk_points_rating.LOW_RISK.value
 
         deduct_points_from_all_lines_of_insurance(risk_profile, number_of_risk_points_to_deduct)

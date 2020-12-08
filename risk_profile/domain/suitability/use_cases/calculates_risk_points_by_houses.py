@@ -20,10 +20,10 @@ class CalculateRiskPointsByHouses:
                 find_insurance_by_reference_and_add_risk_point(
                     risk_profile["home"],
                     house["id"],
-                    self.risk_points_rating.MODERATE.value
+                    self.risk_points_rating.LOW_RISK.value
                 )
 
                 add_risk_point_for_insurance(
                     risk_profile["disability"],
-                    self.risk_points_rating.MODERATE.value
+                    self.risk_points_rating.LOW_RISK.value
                 )

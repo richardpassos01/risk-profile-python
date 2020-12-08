@@ -9,10 +9,10 @@ class CalculateRiskPointsByDependents:
         if user["dependents"]:
             add_risk_point_for_insurance(
                 risk_profile["disability"],
-                self.risk_points_rating.MODERATE.value
+                self.risk_points_rating.LOW_RISK.value
             )
 
             add_risk_point_for_insurance(
                 risk_profile["life"],
-                self.risk_points_rating.MODERATE.value
+                self.risk_points_rating.LOW_RISK.value
             )
