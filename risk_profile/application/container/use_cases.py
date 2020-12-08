@@ -4,7 +4,7 @@ from risk_profile.domain.suitability.use_cases import provide_base_suitability
 from risk_profile.domain.suitability.use_cases import determine_eligibility
 from risk_profile.domain.suitability.use_cases import calculates_risk_points_by_age
 from risk_profile.domain.suitability.use_cases import calculates_risk_points_by_income
-from risk_profile.domain.suitability.use_cases import calculates_risk_points_by_house
+from risk_profile.domain.suitability.use_cases import calculates_risk_points_by_houses
 from risk_profile.domain.suitability.use_cases import calculates_risk_points_by_dependents
 from risk_profile.domain.suitability.use_cases import calculates_risk_points_by_marital_status
 from risk_profile.domain.suitability.use_cases import calculates_risk_points_by_vehicle
@@ -25,8 +25,8 @@ def create_calculates_risk_points_by_age():
 def create_calculates_risk_points_by_income():
     return calculates_risk_points_by_income.CalculateRiskPointsByIncome()
 
-def create_calculates_risk_points_by_house():
-    return calculates_risk_points_by_house.CalculateRiskPointsByHouse()
+def create_calculates_risk_points_by_houses():
+    return calculates_risk_points_by_houses.CalculateRiskPointsByHouses()
 
 def create_calculates_risk_points_by_dependents():
     return calculates_risk_points_by_dependents.CalculateRiskPointsByDependents()
@@ -44,7 +44,7 @@ def create_provide_risk_profile():
         create_determine_eligibility(),
         create_calculates_risk_points_by_age(),
         create_calculates_risk_points_by_income(),
-        create_calculates_risk_points_by_house(),
+        create_calculates_risk_points_by_houses(),
         create_calculates_risk_points_by_dependents(),
         create_calculates_risk_points_by_marital_status(),
         create_calculates_risk_points_by_vehicle(), 

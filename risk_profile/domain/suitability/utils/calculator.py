@@ -9,3 +9,20 @@ def deduct_points_from_all_lines_of_insurance(
                 
         if not isinstance(risk_profile[insurance], list):
             risk_profile[insurance]["risk_points"] -= number_of_risk_points_to_deduct
+
+
+def find_insurance_by_reference_and_add_risk_point(
+    insurances,
+    reference_id,
+    number_of_risk_points_to_add
+):
+    for insurance in insurances:
+        if insurance["id"] == reference_id:
+            insurance["risk_points"] += number_of_risk_points_to_add
+
+
+def add_risk_point_for_insurance(
+    insurance,
+    number_of_risk_points_to_add
+):
+    insurance["risk_points"] += number_of_risk_points_to_add
