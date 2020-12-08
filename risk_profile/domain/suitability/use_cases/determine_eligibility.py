@@ -10,7 +10,7 @@ class DetermineEligibility:
         self.determine_by_age(user, risk_profile)
         self.determine_by_income(user, risk_profile)
         self.determine_by_vehicle(user, risk_profile)
-        self.determine_by_house(user, risk_profile)
+        self.determine_by_houses(user, risk_profile)
 
     def determine_by_age(self, user, risk_profile):
         if user["age"] > self.user_definition_by_age.SENIOR.value:
@@ -18,15 +18,15 @@ class DetermineEligibility:
             risk_profile["life"]["is_eligible"] = False
 
     def determine_by_income(self, user, risk_profile):
-        if not user["income"]:
+        if not "income" in user or user["income"] == 0:
             risk_profile["disability"]["is_eligible"] = False
         
     def determine_by_vehicle(self, user, risk_profile):
-        if not user["vehicles"]:
+        if not "vehicles" in user:
             risk_profile["auto"]["is_eligible"] = False
 
-    def determine_by_house(self, user, risk_profile):
-        if not user["houses"]:
+    def determine_by_houses(self, user, risk_profile):
+        if not "houses" in user:
             risk_profile["home"]["is_eligible"] = False
             return
 

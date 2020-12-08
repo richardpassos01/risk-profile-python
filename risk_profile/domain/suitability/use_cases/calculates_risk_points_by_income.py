@@ -8,7 +8,7 @@ class CalculateRiskPointsByIncome:
         self.risk_points_rating = RiskPointsRating
 
     def execute(self, user, risk_profile):
-        if user["income"] > self.income_situation_by_money.SAFE.value:
+        if "income" in user and user["income"] > self.income_situation_by_money.SAFE.value:
             number_of_risk_points_to_deduct = self.risk_points_rating.MODERATE.value
 
             deduct_points_from_all_lines_of_insurance(risk_profile, number_of_risk_points_to_deduct)
