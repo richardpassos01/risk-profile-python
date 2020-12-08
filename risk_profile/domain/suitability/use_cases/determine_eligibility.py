@@ -13,7 +13,7 @@ class DetermineEligibility:
         self.determine_by_house(user, risk_profile)
 
     def determine_by_age(self, user, risk_profile):
-        if (user["age"] > self.user_definition_by_age.SENIOR.value):
+        if user["age"] > self.user_definition_by_age.SENIOR.value:
             risk_profile["disability"]["is_eligible"] = False
             risk_profile["life"]["is_eligible"] = False
 
@@ -35,10 +35,10 @@ class DetermineEligibility:
             "If the user owns a home, the renter's insurance corresponding to that home will be ineligible."
             "If the user's home is rented, home insurance is not eligible"
 
-            if (house["ownership_status"] == self.user_home_ownership_status.OWNED.value):
+            if house["ownership_status"] == self.user_home_ownership_status.OWNED.value:
                 renters = [renter for renter in risk_profile["renters"] if renter.get('id') == house["id"]]
                 renters[0]["is_eligible"] = False
 
-            if (house["ownership_status"] == self.user_home_ownership_status.RENTEND.value):
+            if house["ownership_status"] == self.user_home_ownership_status.RENTEND.value:
                 homes = [home for home in risk_profile["home"] if home.get('id') == house["id"]]
                 homes[0]["is_eligible"] = False

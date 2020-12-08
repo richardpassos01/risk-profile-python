@@ -13,4 +13,5 @@ class RiskProfileViewSet(viewsets.ModelViewSet):
         risk_profile = provide_risk_profile.execute(request.data)
        
         serializer = SuitabilitySerializer(self.queryset, many=True)
-        return Response(serializer.data)
+        # return Response(serializer.data)
+        return Response(risk_profile)

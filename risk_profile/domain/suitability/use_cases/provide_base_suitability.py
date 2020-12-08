@@ -29,8 +29,8 @@ class ProvideBaseSuitability:
         return base_insurance
 
     def create_base_insurance(self, value = { "id": 0 }):
-        return {
-            "id": value["id"],
-            "is_eligible": self.base_eligible_status,
-            "risk_points": self.base_score,
-        }
+        return dict(
+            id = value["id"],
+            is_eligible = self.base_eligible_status,
+            risk_points = self.base_score,
+        )
