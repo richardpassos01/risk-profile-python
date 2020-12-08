@@ -40,8 +40,8 @@ def create_calculates_risk_points_by_vehicle():
 def create_provide_risk_profile():
     return provide_risk_profile.ProvideRiskProfile(
         create_calculate_base_score(),
-        create_determine_eligibility(),
         create_provide_base_suitability(),
+        create_determine_eligibility(),
         create_calculates_risk_points_by_age(),
         create_calculates_risk_points_by_income(),
         create_calculates_risk_points_by_house(),
