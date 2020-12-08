@@ -12,7 +12,7 @@ class ProvideRiskProfile:
         calculates_risk_points_by_houses,
         calculates_risk_points_by_dependents,
         calculates_risk_points_by_marital_status,
-        calculates_risk_points_by_vehicle,
+        calculates_risk_points_by_vehicles,
     ):
         self.calculate_base_score = calculate_base_score
         self.provide_base_suitability = provide_base_suitability
@@ -22,7 +22,7 @@ class ProvideRiskProfile:
         self.calculates_risk_points_by_houses = calculates_risk_points_by_houses
         self.calculates_risk_points_by_dependents = calculates_risk_points_by_dependents
         self.calculates_risk_points_by_marital_status = calculates_risk_points_by_marital_status
-        self.calculates_risk_points_by_vehicle = calculates_risk_points_by_vehicle
+        self.calculates_risk_points_by_vehicles = calculates_risk_points_by_vehicles
 
     def execute(self, data):
         try:
@@ -38,7 +38,7 @@ class ProvideRiskProfile:
             self.calculates_risk_points_by_houses.execute(user, risk_profile);
             self.calculates_risk_points_by_dependents.execute(user, risk_profile);
             self.calculates_risk_points_by_marital_status.execute(user, risk_profile);
-            self.calculates_risk_points_by_vehicle.execute(user, risk_profile);
+            self.calculates_risk_points_by_vehicles.execute(user, risk_profile);
  
             return risk_profile
         except Exception as error:
