@@ -35,7 +35,7 @@ class ProvideSuitability:
             
             suitabilities.insert(len(suitabilities), {
                 "id": insurance["id"],
-                "status": suitability
+                "plan": suitability
             })
         
         return suitabilities
