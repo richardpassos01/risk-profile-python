@@ -1,4 +1,4 @@
-from risk_profile.domain.suitability.utils.calculator import add_risk_point_for_insurance
+from risk_profile.domain.suitability.helper.risk_points_calculator import add_risk_point_for_insurance
 from risk_profile.shared.enums.risk_points_rating import RiskPointsRating
 
 class CalculateRiskPointsByDependents:

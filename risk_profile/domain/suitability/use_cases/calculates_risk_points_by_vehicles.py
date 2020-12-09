@@ -1,5 +1,5 @@
 import datetime
-from risk_profile.domain.suitability.utils.calculator import find_insurance_by_reference_and_add_risk_point
+from risk_profile.domain.suitability.helper.risk_points_calculator import find_insurance_by_reference_and_add_risk_point
 from risk_profile.shared.enums.vehicle_situation import VehicleSituation
 from risk_profile.shared.enums.risk_points_rating import RiskPointsRating
 

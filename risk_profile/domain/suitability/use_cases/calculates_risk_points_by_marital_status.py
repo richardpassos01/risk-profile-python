@@ -1,7 +1,7 @@
 from risk_profile.shared.enums.user_marital_status import UserMaritalStatus
 from risk_profile.shared.enums.risk_points_rating import RiskPointsRating
-from risk_profile.domain.suitability.utils.calculator import add_risk_point_for_insurance
-from risk_profile.domain.suitability.utils.calculator import deduct_risk_point_for_insurance
+from risk_profile.domain.suitability.helper.risk_points_calculator import add_risk_point_for_insurance
+from risk_profile.domain.suitability.helper.risk_points_calculator import deduct_risk_point_for_insurance
 
 
 class CalculateRiskPointsByMaritalStatus:

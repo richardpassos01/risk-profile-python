@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from risk_profile.domain.suitability import Suitability as Model
 
-
-class SuitabilitySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Model.Suitability
-        fields = '__all__'
+class SuitabilitySerializer(serializers.Serializer):
+    auto = serializers.JSONField()
+    disability = serializers.CharField(max_length=None)
+    renters = serializers.JSONField()
+    home = serializers.JSONField()
+    life = serializers.CharField(max_length=None)

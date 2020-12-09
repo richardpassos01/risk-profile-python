@@ -1,6 +1,6 @@
 from risk_profile.shared.enums.income_situation_by_money import IncomeSituationByMoney
 from risk_profile.shared.enums.risk_points_rating import RiskPointsRating
-from risk_profile.domain.suitability.utils.calculator import deduct_points_from_all_lines_of_insurance 
+from risk_profile.domain.suitability.helper.risk_points_calculator import deduct_points_from_all_lines_of_insurance 
 
 class CalculateRiskPointsByIncome:
     def __init__(self):
