@@ -20,7 +20,7 @@ class ProvideBaseSuitability:
                 if "houses" in user
                 else self.create_base_insurance(),
         )
-
+        
         return base_suitability
     
 

@@ -6,6 +6,9 @@ class CalculateRiskPointsByDependents:
         self.risk_points_rating = RiskPointsRating
 
     def execute(self, user, risk_profile):   
+        """
+            Check if the user has dependents and add 1 risk point to both the disability and life scores if has.
+        """
         if user["dependents"]:
             add_risk_point_for_insurance(
                 risk_profile["disability"],

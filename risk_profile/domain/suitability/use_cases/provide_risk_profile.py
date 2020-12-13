@@ -38,7 +38,7 @@ class ProvideRiskProfile:
             self.calculates_risk_points_by_dependents.execute(user, risk_profile);
             self.calculates_risk_points_by_marital_status.execute(user, risk_profile);
             self.calculates_risk_points_by_vehicles.execute(user, risk_profile);
- 
+            
             return self.provide_suitability.execute(risk_profile)
         except Exception as error:
             print(error)
