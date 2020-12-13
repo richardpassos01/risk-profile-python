@@ -21,7 +21,7 @@ class CalculateRiskPointsByHousesTestCase(TestCase):
         self.assertEquals(self.risk_profile, MockRiskProfile.risk_profile)
 
 
-    def test_calculates_risk_points_wit_one_house(self):
+    def test_calculates_risk_points_with_one_house(self):
         """
             Should add 1 risk point to home insurance when user have one house
         """
@@ -32,7 +32,7 @@ class CalculateRiskPointsByHousesTestCase(TestCase):
             self.assertEquals(house["risk_points"], 2)
     
     
-    def test_calculates_risk_points_wit_mortgaged_house(self):
+    def test_calculates_risk_points_with_mortgaged_house(self):
         """
             Should add 1 risk point to home and disability insurance when house is mortgaged
         """
@@ -59,7 +59,7 @@ class CalculateRiskPointsByHousesTestCase(TestCase):
         self.assertEquals(self.risk_profile["disability"]["risk_points"], 2)
 
 
-    def test_calculates_risk_points_wit_one_mortgaged_house(self):
+    def test_calculates_risk_points_with_one_mortgaged_house(self):
         """
             Should add 1 risk point to home and disability insurance when house is mortgaged
             and add more 1 when user has just one house
