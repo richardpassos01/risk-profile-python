@@ -10,6 +10,6 @@ class RiskProfileViewSet(viewsets.ModelViewSet):
     def create(self, request):
         provide_risk_profile = use_cases.create_provide_risk_profile()
         risk_profile = provide_risk_profile.execute(request.data)
-       
+
         serializer = SuitabilitySerializer(risk_profile, many=False)
         return Response(serializer.data)
