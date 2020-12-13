@@ -3,14 +3,12 @@ from django.test import TestCase
 from risk_profile.domain.suitability.use_cases.calculates_risk_points_by_dependents import CalculateRiskPointsByDependents
 from tests.risk_profile.unit.domain.suitability.mock import risk_profile as MockRiskProfile
 from tests.risk_profile.unit.domain.suitability.mock import user as MockUser
-from risk_profile.shared.enums.risk_points_rating import RiskPointsRating
 
 class CalculateRiskPointsByDependentsTestCase(TestCase):
     def setUp(self):
         self.user = copy.deepcopy(MockUser.user)
         self.risk_profile = copy.deepcopy(MockRiskProfile.risk_profile)
         self.calculates_risk_points_by_dependents = CalculateRiskPointsByDependents()
-        self.risk_points_rating = RiskPointsRating
 
 
     def test_calculates_risk_points_by_dependents(self):
