@@ -1,6 +1,7 @@
 from rest_framework import viewsets
 from risk_profile.application.container import use_cases
 from risk_profile.domain.suitability.serializer import SuitabilitySerializer
+from risk_profile.domain.user.serializer import UserSerializer
 from rest_framework.response import Response
 
 from django.utils.decorators import decorator_from_middleware
@@ -10,7 +11,7 @@ user_schema_validator = decorator_from_middleware(UserSchemaValidatorMiddleware)
  
 class RiskProfileViewSet(viewsets.ModelViewSet):
     queryset = ""
-    serializer_class = SuitabilitySerializer
+    serializer_class = UserSerializer
 
     @user_schema_validator
     def create(self, request):
