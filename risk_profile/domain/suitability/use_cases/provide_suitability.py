@@ -1,13 +1,14 @@
 from risk_profile.shared.enums.insurances import InsuranceNames
 from risk_profile.shared.enums.insurances import PointsToBeInsurance
 
-
 class ProvideSuitability:
-    def __init__(self):
+    def __init__(self, logger):
+        self.logger = logger
         self.insurance_names = InsuranceNames
         self.points_to_be_insurance = PointsToBeInsurance
 
-    def execute(self, risk_profile): 
+    def execute(self, risk_profile):
+        
         suitability = dict(
             auto = 
                 list(self.map_insurances_to_create_suitabilities(risk_profile["auto"]))
@@ -25,6 +26,7 @@ class ProvideSuitability:
             life = self.create_suitability(risk_profile["life"]),
         )
 
+        self.logger.info('Suitability created successfully')
         return suitability 
 
     def map_insurances_to_create_suitabilities(self, insurances):

@@ -2,12 +2,15 @@ import copy
 from django.test import TestCase
 from risk_profile.domain.suitability.use_cases.provide_suitability import ProvideSuitability
 from tests.risk_profile.unit.domain.suitability.mock import risk_profile as MockRiskProfile
-
+from tests.risk_profile.unit.domain.suitability.mock import logger as MockLogger
 
 class ProvideSuitabilityTestCase(TestCase):
+    
     def setUp(self):
         self.risk_profile = copy.deepcopy(MockRiskProfile.risk_profile)
-        self.provide_suitability = ProvideSuitability()
+        self.provide_suitability = ProvideSuitability(
+            MockLogger.logger
+        )
     
 
     def test_create_suitability(self):

@@ -4,9 +4,11 @@ from risk_profile.domain.suitability.helper.risk_points_calculator import deduct
 
 
 class CalculateRiskPointsByAge:
-    def __init__(self):
+    def __init__(self, logger):
+        self.logger = logger
         self.user_definition_by_age = UserDefinitionByQuantityYears
         self.risk_points_rating = RiskPointsRating
+
 
     def execute(self, user, risk_profile):   
         is_under_the_age_of_thirty = user["age"] < self.user_definition_by_age.YOUNG.value
@@ -16,7 +18,7 @@ class CalculateRiskPointsByAge:
         number_of_risk_points_to_deduct = 0
 
         if not is_under_the_age_of_thirty and not is_between_forty_and_fifty_years_old:
-            print('User does not meet score calculation criteria')
+            self.logger.info('User does not meet score calculation criteria')
             return
 
         if is_under_the_age_of_thirty:
@@ -26,3 +28,5 @@ class CalculateRiskPointsByAge:
             number_of_risk_points_to_deduct = self.risk_points_rating.LOW_RISK.value
 
         deduct_points_from_all_lines_of_insurance(risk_profile, number_of_risk_points_to_deduct)
+
+        self.logger.info('{} risk points were deducted from all insurance lines because the user is {} years old.'.format(number_of_risk_points_to_deduct, user["age"]))

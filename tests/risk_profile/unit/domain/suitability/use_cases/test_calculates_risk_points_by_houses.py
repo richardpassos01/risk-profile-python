@@ -3,12 +3,16 @@ from django.test import TestCase
 from risk_profile.domain.suitability.use_cases.calculates_risk_points_by_houses import CalculateRiskPointsByHouses
 from tests.risk_profile.unit.domain.suitability.mock import risk_profile as MockRiskProfile
 from tests.risk_profile.unit.domain.suitability.mock import user as MockUser
+from tests.risk_profile.unit.domain.suitability.mock import logger as MockLogger
+
 
 class CalculateRiskPointsByHousesTestCase(TestCase):
     def setUp(self):
         self.user = copy.deepcopy(MockUser.user)
         self.risk_profile = copy.deepcopy(MockRiskProfile.risk_profile)
-        self.calculates_risk_points_by_houses = CalculateRiskPointsByHouses()
+        self.calculates_risk_points_by_houses = CalculateRiskPointsByHouses(
+            MockLogger.logger
+        )
 
 
     def test_not_calculates_risk_points_without_house(self):

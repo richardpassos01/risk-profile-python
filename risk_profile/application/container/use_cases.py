@@ -1,3 +1,4 @@
+from risk_profile.application.logger.logger import Logger
 from risk_profile.domain.suitability.use_cases import provide_risk_profile
 from risk_profile.domain.suitability.use_cases import calculate_base_score
 from risk_profile.domain.suitability.use_cases import provide_base_suitability
@@ -10,36 +11,55 @@ from risk_profile.domain.suitability.use_cases import calculates_risk_points_by_
 from risk_profile.domain.suitability.use_cases import calculates_risk_points_by_vehicles
 from risk_profile.domain.suitability.use_cases import provide_suitability
 
+logger = Logger().get_instance()
 
 def create_calculate_base_score():
-    return calculate_base_score.CalculateBaseScore()
+    return calculate_base_score.CalculateBaseScore(
+        logger
+    )
 
 def create_provide_base_suitability():
     return provide_base_suitability.ProvideBaseSuitability()
 
 def create_determine_eligibility():
-    return determine_eligibility.DetermineEligibility()
+    return determine_eligibility.DetermineEligibility(
+        logger
+    )
 
 def create_calculates_risk_points_by_age():
-    return calculates_risk_points_by_age.CalculateRiskPointsByAge()
+    return calculates_risk_points_by_age.CalculateRiskPointsByAge(
+        logger
+    )
 
 def create_calculates_risk_points_by_income():
-    return calculates_risk_points_by_income.CalculateRiskPointsByIncome()
+    return calculates_risk_points_by_income.CalculateRiskPointsByIncome(
+        logger
+    )
 
 def create_calculates_risk_points_by_houses():
-    return calculates_risk_points_by_houses.CalculateRiskPointsByHouses()
+    return calculates_risk_points_by_houses.CalculateRiskPointsByHouses(
+        logger
+    )
 
 def create_calculates_risk_points_by_dependents():
-    return calculates_risk_points_by_dependents.CalculateRiskPointsByDependents()
+    return calculates_risk_points_by_dependents.CalculateRiskPointsByDependents(
+        logger
+    )
 
 def create_calculates_risk_points_by_marital_status():
-    return calculates_risk_points_by_marital_status.CalculateRiskPointsByMaritalStatus()
+    return calculates_risk_points_by_marital_status.CalculateRiskPointsByMaritalStatus(
+        logger
+    )
 
 def create_calculates_risk_points_by_vehicles():
-    return calculates_risk_points_by_vehicles.CalculateRiskPointsByVehicles()
+    return calculates_risk_points_by_vehicles.CalculateRiskPointsByVehicles(
+        logger
+    )
 
 def create_provide_suitability():
-    return provide_suitability.ProvideSuitability()
+    return provide_suitability.ProvideSuitability(
+        logger
+    )
 
 def create_provide_risk_profile():
     return provide_risk_profile.ProvideRiskProfile(

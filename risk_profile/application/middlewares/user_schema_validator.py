@@ -6,7 +6,6 @@ class UserSchemaValidatorMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        self.valid_user_schema({})
         response = self.get_response(request)
 
         return response
@@ -16,9 +15,9 @@ class UserSchemaValidatorMiddleware:
 
     def process_request(self, request):
         user = request.request.data
-        return self.valid_user_schema(user)
+        return self.validate_user_schema(user)
 
-    def valid_user_schema(self, user):
+    def validate_user_schema(self, user):
         schema = {
             "type" : "object",
             "properties" : {

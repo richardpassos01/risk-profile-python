@@ -4,13 +4,16 @@ from django.test import TestCase
 from risk_profile.domain.suitability.use_cases.determine_eligibility import DetermineEligibility
 from tests.risk_profile.unit.domain.suitability.mock import user as MockUser
 from tests.risk_profile.unit.domain.suitability.mock import risk_profile as MockRiskProfile
+from tests.risk_profile.unit.domain.suitability.mock import logger as MockLogger
 
 
 class DetermineEligibilityTestCase(TestCase):
     def setUp(self):
         self.user = copy.deepcopy(MockUser.user)
         self.risk_profile = copy.deepcopy(MockRiskProfile.risk_profile)
-        self.determine_eligibility = DetermineEligibility()
+        self.determine_eligibility = DetermineEligibility(
+            MockLogger.logger
+        )
 
     def test_determine_by_age(self):
         """

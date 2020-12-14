@@ -5,9 +5,11 @@ from risk_profile.domain.suitability.helper.risk_points_calculator import deduct
 
 
 class CalculateRiskPointsByMaritalStatus:
-    def __init__(self):
+    def __init__(self, logger):
+        self.logger = logger
         self.user_marital_status = UserMaritalStatus
         self.risk_points_rating = RiskPointsRating
+
 
     def execute(self, user, risk_profile):   
         if user["marital_status"] == self.user_marital_status.DOMESTIC_PARTNERSHIP.value:
@@ -20,6 +22,11 @@ class CalculateRiskPointsByMaritalStatus:
                 risk_profile["disability"],
                 self.risk_points_rating.LOW_RISK.value
             )
+
+            self.logger.info('{} risk points were add from Life insurance and {} deducted from Disability because the user is domestic partnership.'
+                .format(self.risk_points_rating.BIG_RISK.value, self.risk_points_rating.LOW_RISK.value)
+            )
+
     
         if user["marital_status"] == self.user_marital_status.MARRIED.value: 
             add_risk_point_for_insurance(
@@ -30,4 +37,8 @@ class CalculateRiskPointsByMaritalStatus:
             deduct_risk_point_for_insurance(
                 risk_profile["disability"],
                 self.risk_points_rating.LOW_RISK.value
+            )
+
+            self.logger.info('{} risk points were add from Life insurance and {} deducted from Disability because the user is married.'
+                .format(self.risk_points_rating.LOW_RISK.value, self.risk_points_rating.LOW_RISK.value)
             )

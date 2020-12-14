@@ -3,10 +3,13 @@ from risk_profile.domain.suitability.helper.risk_points_calculator import find_i
 from risk_profile.shared.enums.vehicle_situation import VehicleSituation
 from risk_profile.shared.enums.risk_points_rating import RiskPointsRating
 
+
 class CalculateRiskPointsByVehicles:
-    def __init__(self):
+    def __init__(self, logger):
+        self.logger = logger
         self.vehicle_situation = VehicleSituation
         self.risk_points_rating = RiskPointsRating
+
 
     def execute(self, user, risk_profile):
         "If the user's vehicle was produced in the last 5 years, add 1 risk point to that vehicle’s score."
@@ -28,10 +31,19 @@ class CalculateRiskPointsByVehicles:
                     vehicle["id"],
                     self.risk_points_rating.LOW_RISK.value
                 )
+                
+                self.logger.info('{} risk points were add from Auto insurance because user has just one Vehicle.'
+                    .format(self.risk_points_rating.LOW_RISK.value)
+                )
+
 
             if is_new_vehicle: 
                 find_insurance_by_reference_and_add_risk_point(
                     risk_profile["auto"],
                     vehicle["id"],
                     self.risk_points_rating.LOW_RISK.value
+                )
+
+                self.logger.info('{} risk points were add from Auto insurance because the user s vehicle was produced in the last {} years.'
+                    .format(self.risk_points_rating.LOW_RISK.value, produced_how_many_years_ago)
                 )
