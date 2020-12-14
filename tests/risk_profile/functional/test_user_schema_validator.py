@@ -33,9 +33,12 @@ class UserSchemaValidatorTestCase(TestCase):
             content_type="application/json"
         )
 
-        expected = {'error': "'age' is a required property"}
+        expected = {
+            'message': "'age' is a required property",
+            'code': 'VLD0001'
+        }
         
-        self.assertEqual(response.status_code, 500)
+        self.assertEqual(response.status_code, 422)
         self.assertEqual(response.json(), expected)
     
     def test_negative_age(self):
@@ -69,9 +72,12 @@ class UserSchemaValidatorTestCase(TestCase):
             content_type="application/json"
         )
 
-        expected = {'error': '-1 is less than the minimum of 0'}
+        expected = {
+            'message': '-1 is less than the minimum of 0',
+            'code': 'VLD0001'
+        }
         
-        self.assertEqual(response.status_code, 500)
+        self.assertEqual(response.status_code, 422)
         self.assertEqual(response.json(), expected)
 
     def test_unacceptable_age(self):
@@ -105,9 +111,12 @@ class UserSchemaValidatorTestCase(TestCase):
             content_type="application/json"
         )
 
-        expected = {'error': '115 is greater than or equal to the maximum of 110'}
+        expected = {
+            'message': '115 is greater than or equal to the maximum of 110',
+            'code': 'VLD0001'
+        }
         
-        self.assertEqual(response.status_code, 500)
+        self.assertEqual(response.status_code, 422)
         self.assertEqual(response.json(), expected)
 
     def test_no_dependents(self):
@@ -140,9 +149,12 @@ class UserSchemaValidatorTestCase(TestCase):
             content_type="application/json"
         )
 
-        expected = {'error': "'dependents' is a required property"}
+        expected = {
+            'message': "'dependents' is a required property",
+            'code': 'VLD0001'
+        }
         
-        self.assertEqual(response.status_code, 500)
+        self.assertEqual(response.status_code, 422)
         self.assertEqual(response.json(), expected)
 
     
@@ -177,8 +189,11 @@ class UserSchemaValidatorTestCase(TestCase):
             content_type="application/json"
         )
 
-        expected = {'error': '-10 is less than the minimum of 0'}
+        expected = {
+            'message': '-10 is less than the minimum of 0',
+            'code': 'VLD0001'
+        }
         
-        self.assertEqual(response.status_code, 500)
+        self.assertEqual(response.status_code, 422)
         self.assertEqual(response.json(), expected)
     

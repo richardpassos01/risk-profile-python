@@ -1,5 +1,9 @@
+from http import HTTPStatus
 from jsonschema import validate
 from django.http import JsonResponse
+from risk_profile.shared.error import custom_error
+from risk_profile.application.error.codes import ApplicationErrorCode
+
 
 class UserSchemaValidatorMiddleware:
     def __init__(self, get_response):
@@ -90,4 +94,8 @@ class UserSchemaValidatorMiddleware:
         try:
             return validate(user, schema)
         except Exception as error:
-            return JsonResponse({ 'error': error.message }, status=500)
+            raise custom_error.CustomError(
+                error.message,
+                ApplicationErrorCode.SCHEMA_VALIDATOR_ERROR.value,
+                HTTPStatus.UNPROCESSABLE_ENTITY
+            )

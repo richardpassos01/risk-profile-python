@@ -1,3 +1,5 @@
+from risk_profile.domain.suitability.error.failure_to_provide_suitability import failure_to_provide_suitability
+
 class ProvideRiskProfile:
     def __init__(
         self,
@@ -41,4 +43,4 @@ class ProvideRiskProfile:
             
             return self.provide_suitability.execute(risk_profile)
         except Exception as error:
-            print(error)
+            raise failure_to_provide_suitability
